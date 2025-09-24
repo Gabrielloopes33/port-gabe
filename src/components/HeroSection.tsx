@@ -161,10 +161,10 @@ export function HeroSection() {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-white/20 text-slate-900 hover:bg-white/85 flex items-center gap-2"
+                  className="border-white/20 text-white hover:bg-white/85 flex items-center gap-2"
                   onClick={() => setShowCvDropdown(!showCvDropdown)}
                 >
-                  <Download className="w-4 h-4 text-slate-900" />
+                  <Download className="w-4 h-4 text-white" />
                   Download CV
                   <ChevronDown className={`w-4 h-4 transition-transform ${showCvDropdown ? 'rotate-180' : ''}`} />
                 </Button>
