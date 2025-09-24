@@ -94,7 +94,7 @@ export function AboutSection() {
           {/* Título da seção */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              Sobre <span className="text-blue-400">Mim</span>
+              About <span className="text-blue-400">Me</span>
             </h2>
             <div className="w-20 h-1 bg-blue-400 mx-auto mb-8"></div>
           </div>

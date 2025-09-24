@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { TypeAnimationComponent } from "@/components/TypeAnimationComponent"
 import ProfileCard from "@/components/ui/profilecard"
-import { Github, Linkedin, Mail, Database, Code, Server, Globe } from "lucide-react"
+import { Github, Linkedin, Mail, Database, Code, Server, Globe, Download, ChevronDown } from "lucide-react"
+import { useState } from 'react'
 
 
 
@@ -22,6 +23,7 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
+  const [showCvDropdown, setShowCvDropdown] = useState(false)
 
   // Dados para o ProfileCard
   const skills = [
@@ -53,6 +55,28 @@ export function HeroSection() {
       })
     }
   }
+
+  // Função para download do CV
+  const downloadCV = (language: 'pt' | 'en') => {
+    const fileName = language === 'pt' ? 'cv-gabriel-lopes-pt.pdf' : 'cv-gabriel-lopes-en.pdf'
+    const link = document.createElement('a')
+    link.href = `/documents/${fileName}`
+    link.download = fileName
+    link.click()
+    setShowCvDropdown(false)
+  }
+
+  useEffect(() => {
+    // Fechar dropdown quando clicar fora
+    const handleClickOutside = (event: MouseEvent) => {
+      if (showCvDropdown && !(event.target as Element)?.closest('.relative')) {
+        setShowCvDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [showCvDropdown])
 
   useEffect(() => {
     if (sectionRef.current && textRef.current && imageRef.current) {
@@ -131,7 +155,39 @@ export function HeroSection() {
               >
                 My Projects
               </AnimatedButton>
-              <Button variant="outline" size="lg" className="border-white/20 text-gray-500 hover:bg-white">Download CV</Button>
+              
+              {/* Dropdown para CV */}
+              <div className="relative">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-white/20 text-slate-900 hover:bg-white/85 flex items-center gap-2"
+                  onClick={() => setShowCvDropdown(!showCvDropdown)}
+                >
+                  <Download className="w-4 h-4 text-slate-900" />
+                  Download CV
+                  <ChevronDown className={`w-4 h-4 transition-transform ${showCvDropdown ? 'rotate-180' : ''}`} />
+                </Button>
+                
+                {showCvDropdown && (
+                  <div className="absolute top-full mt-2 left-0 bg-gray-900 border border-white/20 rounded-lg shadow-2xl backdrop-blur-md z-50 min-w-full">
+                    <button
+                      onClick={() => downloadCV('pt')}
+                      className="w-full px-4 py-3 text-left text-white hover:bg-white/10 transition-colors flex items-center gap-3 rounded-t-lg"
+                    >
+                      <div className="w-6 h-4 bg-green-500 rounded-sm flex items-center justify-center text-xs font-bold text-white">PT</div>
+                      Currículo em Português
+                    </button>
+                    <button
+                      onClick={() => downloadCV('en')}
+                      className="w-full px-4 py-3 text-left text-white hover:bg-white/10 transition-colors flex items-center gap-3 rounded-b-lg"
+                    >
+                      <div className="w-6 h-4 bg-blue-500 rounded-sm flex items-center justify-center text-xs font-bold text-white">EN</div>
+                      Resume in English
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           
