@@ -118,12 +118,12 @@ export function HeroSection() {
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-0"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/80"></div>
       
-      <div className="container mx-auto px-4 relative z-10 max-w-6xl">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+      <div className="container mx-auto px-4 relative z-10 max-w-6xl py-8 md:py-0">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 
               ref={textRef}
@@ -161,10 +161,10 @@ export function HeroSection() {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-white/20 text-white hover:bg-white/85 flex items-center gap-2"
+                  className="border-white/20 text-gray-950 hover:text-gray-900 hover:bg-white/85 flex items-center gap-2"
                   onClick={() => setShowCvDropdown(!showCvDropdown)}
                 >
-                  <Download className="w-4 h-4 text-white" />
+                  <Download className="w-4 h-4" />
                   Download CV
                   <ChevronDown className={`w-4 h-4 transition-transform ${showCvDropdown ? 'rotate-180' : ''}`} />
                 </Button>
@@ -193,7 +193,7 @@ export function HeroSection() {
           
           <div 
             ref={imageRef}
-            className="md:w-1/2 flex justify-center"
+            className="md:w-1/2 flex justify-center mt-8 md:mt-0"
           >
             <ProfileCard
               img="/images/profile-photo.jpg"
