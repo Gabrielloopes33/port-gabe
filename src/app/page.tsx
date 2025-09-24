@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/Navbar"
 import { HeroSection } from "@/components/HeroSection"
 import { ElevatorPitch } from "@/components/ElevatorPitch"
+import { AboutSection } from "@/components/AboutSection"
 import { ProjectsSection } from "@/components/ProjectsSection"
 import { ContactSection } from "@/components/ContactSection"
 import { Footer } from "@/components/Footer"
@@ -24,6 +25,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ElevatorPitch />
+      <AboutSection />
       <ProjectsSection />
       <ContactSection />
       <Footer />

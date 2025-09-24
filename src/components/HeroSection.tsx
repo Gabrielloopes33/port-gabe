@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { TypeAnimationComponent } from "@/components/TypeAnimationComponent"
+import ProfileCard from "@/components/ui/profilecard"
+import { Github, Linkedin, Mail, Database, Code, Server, Globe } from "lucide-react"
 
 
 
@@ -20,6 +22,22 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
+
+  // Dados para o ProfileCard
+  const skills = [
+    { name: "React", icon: <Code className="w-5 h-5 text-white" /> },
+    { name: "Next.js", icon: <Globe className="w-5 h-5 text-white" /> },
+    { name: "Node.js", icon: <Server className="w-5 h-5 text-white" /> },
+    { name: "TypeScript", icon: <Code className="w-5 h-5 text-white" /> },
+    { name: "PostgreSQL", icon: <Database className="w-5 h-5 text-white" /> },
+    { name: "Supabase", icon: <Database className="w-5 h-5 text-white" /> },
+  ]
+
+  const socialLinks = [
+    { name: "GitHub", url: "https://github.com/Gabrielloopes33", icon: <Github className="w-5 h-5 text-white" /> },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/gabriel-lopes-522ba117a/", icon: <Linkedin className="w-5 h-5 text-white" /> },
+
+  ]
 
   // Função para scroll suave para a seção de projetos
   const scrollToProjects = () => {
@@ -121,18 +139,16 @@ export function HeroSection() {
             ref={imageRef}
             className="md:w-1/2 flex justify-center"
           >
-            <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 bg-blue-600 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-2xl shadow-blue-500/20">
-                <img 
-                  src="/images/profile-photo.jpg"
-                  alt="Gabriel's profile photo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-black/80 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-white/10">
-                <span className="font-bold text-blue-400">3+ years</span> <span className="text-white">experience</span>
-              </div>
-            </div>
+            <ProfileCard
+              img="/images/profile-photo.jpg"
+              name="Gabriel Lopes"
+              position="Full Stack Developer"
+              bio="Developer passionate about creating modern and scalable web solutions, with 3+ years of experience."
+              skills={skills}
+              socialLinks={socialLinks}
+              spotlight={true}
+              spotlightColor="59, 130, 246"
+            />
           </div>
         </div>
       </div>

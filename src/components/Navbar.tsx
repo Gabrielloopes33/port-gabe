@@ -31,7 +31,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="navbar-item text-2xl font-bold text-white">Portfolio</div>
         <div className="hidden md:flex space-x-8">
-          {['Home', 'Projetos', 'Contato'].map((item, index) => (
+          {['Home', 'Sobre', 'Projetos', 'Contato'].map((item, index) => (
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`}
