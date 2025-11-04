@@ -1,4 +1,4 @@
-// File: C:\Users\gmora\Documents\port-gabe\portfolio\src\app\layout.tsx
+// File: C:\Users\gmora\Desktop\developer\MEU PORTFOLIO\port-gabe\src\app\layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

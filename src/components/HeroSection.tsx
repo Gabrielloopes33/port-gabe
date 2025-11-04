@@ -161,7 +161,7 @@ export function HeroSection() {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-white/20 text-gray-950 hover:text-gray-900 hover:bg-white/85 flex items-center gap-2"
+                  className="border-white/20 text-white-950 hover:text-gray-900 hover:bg-white/85 flex items-center gap-2"
                   onClick={() => setShowCvDropdown(!showCvDropdown)}
                 >
                   <Download className="w-4 h-4" />

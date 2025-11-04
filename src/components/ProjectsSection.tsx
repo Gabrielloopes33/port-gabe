@@ -79,6 +79,27 @@ export function ProjectsSection() {
       image: "/images/celf-site.jpeg",
       detailedDescription: "The website was structured following the user journey: Discover - Presentation of the company and services - Trust - Demonstration of credibility and experience - Request a Proposal - Conversion of the visitor into a lead/customer"
     },
+    {
+      title: "MeuPet - Pet Care Management App",
+      description: "Complete Flutter app connecting pet owners to specialized services with GPS, custom maps, and appointment system.",
+      tags: ["Flutter", "Dart", "Riverpod", "GoRouter", "Geolocator"],
+      image: "/images/meupet-app.png",
+      detailedDescription: "MeuPet is a comprehensive mobile solution developed in Flutter that connects pet owners to specialized service providers. The app features a complete pet management system with GPS location services, custom maps without external API dependencies, appointment scheduling, and health tracking. Key features include: real-time location of nearby veterinarians, pet shops, grooming services, and pet hotels; custom map implementation using Web Mercator projection; complete pet registration with photo upload; integrated calendar for appointments; and secure authentication system. Built with Flutter 3.9.2+, Riverpod for state management, and GoRouter for navigation, delivering a seamless experience across all mobile platforms."
+    },
+    {
+      title: "MOBS2 - Real-time Telemetry App",
+      description: "Flutter telemetry app with real-time GPS tracking, speed calculation, and sensor data visualization.",
+      tags: ["Flutter", "Provider", "Geolocator", "Sensors", "FlutterMap"],
+      image: "/images/mobs2-telemetry.png",
+      detailedDescription: "MOBS2 is a technical case study Flutter application focused on real-time telemetry data collection and visualization. The app demonstrates advanced mobile development skills through GPS tracking, sensor integration, and data processing. Features include: real-time GPS location with enhanced precision; dynamic speed calculation (GPS + manual fallback); intelligent direction using GPS + magnetometer backup; 3D acceleration via device sensors (X, Y, Z axes); advanced metrics (max/average speed, distance, session time); interactive map with rotating marker based on direction; robust data validation with GPS precision filtering; outlier detection for speed readings; and memory-optimized performance with proper stream disposal. Built with Provider pattern for state management and OpenStreetMap for mapping without API dependencies."
+    },
+    {
+      title: "Social Test - Culinary Social Network",
+      description: "Flutter social network app focused on culinary content with 8 types of posts, Material 3 design, and BLoC architecture.",
+      tags: ["Flutter", "BLoC", "Material 3", "Firebase", "Dart"],
+      image: "/images/social-test-app.png",
+      detailedDescription: "Social Test is a comprehensive Flutter social network application designed specifically for culinary enthusiasts. The app allows users to share recipes, cooking tips, restaurant reviews, and culinary achievements through a sophisticated posting system. Key features include: 8 specialized post types (recipes, tips, reviews, achievements, questions, inspirations, techniques, ingredients); dynamic tag system for content organization; multi-image support for posts; interactive engagement (like, comment, share, save); metadata for recipes (difficulty, prep time, servings); custom Material 3 design system with blue/white/gray palette; light and dark theme support; responsive layout for web and mobile; clean architecture with BLoC pattern; Firebase integration ready for production. The app includes 5 sample posts in Brazilian Portuguese demonstrating various content types, from sophisticated shrimp risotto recipes to professional pastry techniques."
+    },
   ]
 
   const setCardRef = (index: number) => (el: HTMLDivElement) => {
