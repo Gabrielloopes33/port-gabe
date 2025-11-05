@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Card, CardContent } from "@/components/ui/card"
+import { useLanguage } from "@/contexts/LanguageContext"
 import { Calendar, MapPin, GraduationCap, Briefcase, Heart, Code2 } from "lucide-react"
 
 // Registrar o ScrollTrigger
@@ -12,6 +13,7 @@ if (typeof window !== 'undefined') {
 }
 
 export function AboutSection() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement[]>([])
 
@@ -63,23 +65,23 @@ export function AboutSection() {
   const aboutData = [
     {
       icon: <Briefcase className="w-6 h-6 text-blue-400" />,
-      title: "Experience",
-      description: "2+ years developing modern and scalable web solutions"
+      titleKey: "about.experience.title",
+      descriptionKey: "about.experience.description"
     },
     {
       icon: <GraduationCap className="w-6 h-6 text-green-400" />,
-      title: "Knowledge",
-      description: "Web Development fundamentals - IBM"
+      titleKey: "about.knowledge.title",
+      descriptionKey: "about.knowledge.description"
     },
     {
       icon: <MapPin className="w-6 h-6 text-purple-400" />,
-      title: "Location",
-      description: "Minas Gerais, Brasil - Available for remote work"
+      titleKey: "about.location.title",
+      descriptionKey: "about.location.description"
     },
     {
       icon: <Heart className="w-6 h-6 text-red-400" />,
-      title: "Passion",
-      description: "Creating digital experiences that make a difference in people's lives"
+      titleKey: "about.passion.title",
+      descriptionKey: "about.passion.description"
     }
   ]
 
@@ -94,7 +96,7 @@ export function AboutSection() {
           {/* Título da seção */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              About <span className="text-blue-400">Me</span>
+              {t('about.title')}
             </h2>
             <div className="w-20 h-1 bg-blue-400 mx-auto mb-8"></div>
           </div>
@@ -109,16 +111,13 @@ export function AboutSection() {
                   </div>
                   <div>
                     <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                      I'm a full-stack developer passionate about technology and innovation, with over 2+ years of experience
-creating web solutions that positively impact businesses and users.
+                      {t('about.description1')}
                     </p>
                     <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                      My journey began with curiosity about how websites work, and since then I've dedicated myself
-to mastering modern technologies like React, Next.js, Node.js, and relational databases.
+                      {t('about.description2')}
                     </p>
                     <p className="text-lg text-gray-300 leading-relaxed">
-                      When I'm not coding, I enjoy studying new technologies, contributing to open source projects,
-and always looking for ways to optimize processes and create exceptional user experiences.
+                      {t('about.description3')}
                     </p>
                   </div>
                 </div>
@@ -140,8 +139,8 @@ and always looking for ways to optimize processes and create exceptional user ex
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                      <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                      <h3 className="text-xl font-semibold text-white mb-2">{t(item.titleKey)}</h3>
+                      <p className="text-gray-300 leading-relaxed">{t(item.descriptionKey)}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -153,19 +152,19 @@ and always looking for ways to optimize processes and create exceptional user ex
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-6">
               <div className="text-3xl font-bold text-blue-400 mb-2">3+</div>
-              <div className="text-sm text-gray-300">Years of Experience</div>
+              <div className="text-sm text-gray-300">{t('about.stats.years')}</div>
             </div>
             <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-6">
               <div className="text-3xl font-bold text-green-400 mb-2">15+</div>
-              <div className="text-sm text-gray-300">Completed Projects</div>
+              <div className="text-sm text-gray-300">{t('about.stats.projects')}</div>
             </div>
             <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-6">
               <div className="text-3xl font-bold text-purple-400 mb-2">10+</div>
-              <div className="text-sm text-gray-300">Technologies</div>
+              <div className="text-sm text-gray-300">{t('about.stats.technologies')}</div>
             </div>
             <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-6">
               <div className="text-3xl font-bold text-red-400 mb-2">100%</div>
-              <div className="text-sm text-gray-300">Dedication</div>
+              <div className="text-sm text-gray-300">{t('about.stats.dedication')}</div>
             </div>
           </div>
         </div>

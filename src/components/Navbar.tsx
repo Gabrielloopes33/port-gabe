@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/contexts/LanguageContext"
 import { gsap } from 'gsap'
 
 export function Navbar() {
+  const { t } = useLanguage()
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
@@ -29,19 +31,24 @@ export function Navbar() {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="navbar-item text-2xl font-bold text-white">Portfolio</div>
+        <div className="navbar-item text-2xl font-bold text-white">{t('nav.portfolio')}</div>
         <div className="hidden md:flex space-x-8">
-          {['Home', 'Sobre', 'Projetos', 'Contato'].map((item, index) => (
+          {[
+            { key: 'nav.home', href: '#home' },
+            { key: 'nav.about', href: '#sobre' },
+            { key: 'nav.projects', href: '#projetos' },
+            { key: 'nav.contact', href: '#contato' }
+          ].map((item, index) => (
             <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`}
+              key={item.key} 
+              href={item.href}
               className="navbar-item text-sm font-medium text-gray-300 hover:text-white transition-colors"
             >
-              {item}
+              {t(item.key)}
             </a>
           ))}
         </div>
-        <Button variant="outline" className="navbar-item text-white border-white/20 bg-black/30 hover:bg-white/10">Contato</Button>
+        <Button variant="outline" className="navbar-item text-white border-white/20 bg-black/30 hover:bg-white/10">{t('nav.contact')}</Button>
       </div>
     </nav>
   )

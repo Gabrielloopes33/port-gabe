@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button"
 import { AnimatedButton } from "@/components/ui/animated-button"
 import { TypeAnimationComponent } from "@/components/TypeAnimationComponent"
 import ProfileCard from "@/components/ui/profilecard"
+import { LanguageSelector } from "@/components/ui/language-selector"
+import { useLanguage } from "@/contexts/LanguageContext"
+
 import { Github, Linkedin, Mail, Database, Code, Server, Globe, Download, ChevronDown } from "lucide-react"
 import { useState } from 'react'
 
@@ -20,6 +23,7 @@ if (typeof window !== 'undefined') {
 }
 
 export function HeroSection() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
@@ -125,17 +129,22 @@ export function HeroSection() {
       <div className="container mx-auto px-4 relative z-10 max-w-6xl py-8 md:py-0">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           <div className="md:w-1/2 text-center md:text-left">
+            {/* Language Selector */}
+            <div className="flex justify-center md:justify-start mb-6">
+              <LanguageSelector />
+            </div>
+            
             <h1 
               ref={textRef}
               className="text-4xl md:text-6xl font-bold mb-4 text-white"
             >
-              Hi! I am <span className="text-blue-400">Gabriel</span>
+              {t('hero.greeting')} <span className="text-blue-400">Gabriel</span>
             </h1>
             <h3 
               ref={textRef}
               className="text-xl md:text-2xl font-normal mb-4 text-white"
             >
-              I build <span className="text-blue-400">modern, scalable</span> web applications with
+              {t('hero.subtitle')} <span className="text-blue-400">{t('hero.subtitle.highlight')}</span> {t('hero.subtitle.with')}
             </h3>
             <p className="text-xl md:text-2xl mb-8 text-gray-300">
               <TypeAnimationComponent />
@@ -153,7 +162,7 @@ export function HeroSection() {
                 shimmerDuration="2s"
                 onClick={scrollToProjects}
               >
-                My Projects
+                {t('hero.button.projects')}
               </AnimatedButton>
               
               {/* Dropdown para CV */}
@@ -165,7 +174,7 @@ export function HeroSection() {
                   onClick={() => setShowCvDropdown(!showCvDropdown)}
                 >
                   <Download className="w-4 h-4" />
-                  Download CV
+                  {t('hero.button.cv')}
                   <ChevronDown className={`w-4 h-4 transition-transform ${showCvDropdown ? 'rotate-180' : ''}`} />
                 </Button>
                 
@@ -176,14 +185,14 @@ export function HeroSection() {
                       className="w-full px-4 py-3 text-left text-white hover:bg-white/10 transition-colors flex items-center gap-3 rounded-t-lg"
                     >
                       <div className="w-6 h-4 bg-green-500 rounded-sm flex items-center justify-center text-xs font-bold text-white">PT</div>
-                      Currículo em Português
+                      {t('hero.cv.portuguese')}
                     </button>
                     <button
                       onClick={() => downloadCV('en')}
                       className="w-full px-4 py-3 text-left text-white hover:bg-white/10 transition-colors flex items-center gap-3 rounded-b-lg"
                     >
                       <div className="w-6 h-4 bg-blue-500 rounded-sm flex items-center justify-center text-xs font-bold text-white">EN</div>
-                      Resume in English
+                      {t('hero.cv.english')}
                     </button>
                   </div>
                 )}
@@ -193,13 +202,13 @@ export function HeroSection() {
           
           <div 
             ref={imageRef}
-            className="md:w-1/2 flex justify-center mt-8 md:mt-0"
+            className="md:w-1/2 flex justify-center mt-20 md:mt-0"
           >
             <ProfileCard
               img="/images/profile-photo.jpg"
-              name="Gabriel Lopes"
-              position="Full Stack Developer"
-              bio="Developer passionate about creating modern and scalable web solutions, with 3+ years of experience."
+              name={t('hero.profile.name')}
+              position={t('hero.profile.position')}
+              bio={t('hero.profile.bio')}
               skills={skills}
               socialLinks={socialLinks}
               spotlight={true}

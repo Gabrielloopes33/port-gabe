@@ -5,6 +5,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 // Registrar o ScrollTrigger
 if (typeof window !== 'undefined') {
@@ -12,6 +13,7 @@ if (typeof window !== 'undefined') {
 }
 
 export function ContactSection() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,7 +63,7 @@ export function ContactSection() {
     e.preventDefault()
     // Aqui você pode adicionar a lógica para enviar o formulário
     console.log('Formulário enviado:', formData)
-    alert('Mensagem enviada com sucesso!')
+    alert(t('contact.success'))
     setFormData({ name: '', email: '', message: '' })
   }
 
@@ -72,21 +74,21 @@ export function ContactSection() {
       className="py-20 relative overflow-hidden"
     >      
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">Let’s build something together!</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white">{t('contact.title')}</h2>
         
         <div className="max-w-4xl mx-auto">
           <Card className="bg-black/30 border border-white/10 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="text-white">Vamos trabalhar juntos!</CardTitle>
+              <CardTitle className="text-white">{t('contact.title')}</CardTitle>
               <CardDescription className="text-gray-300">
-                Tem um projeto em mente? Preencha o formulário abaixo e entrarei em contato o mais breve possível.
+                {t('contact.subtitle')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-white mb-2">Nome</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-white mb-2">{t('contact.name')}</label>
                     <input
                       type="text"
                       id="name"
@@ -98,7 +100,7 @@ export function ContactSection() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white mb-2">Email</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-white mb-2">{t('contact.email')}</label>
                     <input
                       type="email"
                       id="email"
@@ -111,7 +113,7 @@ export function ContactSection() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white mb-2">Mensagem</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-white mb-2">{t('contact.message')}</label>
                   <textarea
                     id="message"
                     name="message"
@@ -122,7 +124,7 @@ export function ContactSection() {
                     required
                   ></textarea>
                 </div>
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">Enviar Mensagem</Button>
+                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">{t('contact.send')}</Button>
               </form>
             </CardContent>
           </Card>

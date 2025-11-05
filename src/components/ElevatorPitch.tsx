@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { MovingBorderCard } from "@/components/ui/moving-border-card"
+import { useLanguage } from "@/contexts/LanguageContext"
 import { 
   Code, 
   Paintbrush, 
@@ -16,51 +17,46 @@ import {
 } from 'lucide-react'
 
 export function ElevatorPitch() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
   
   // Definição dos cards com tamanhos variados para criar um layout de grid encaixado
   const features = [
     {
-      title: "Full-Stack Development",
-      description: "Building responsive UIs with React/Next.js and robust APIs with Node.js + PostgreSQL.",
+      titleKey: "elevator.fullstack.title",
+      descriptionKey: "elevator.fullstack.description",
       icon: <Code className="w-6 h-6" />,
-      highlight: "excepcionais",
       size: "medium" // Card médio (ocupa 4 colunas)
     },
     {
-      title: "Marketing Background",
-      description: "Started in agencies as a designer, grew into web design, and later founded my own marketing shop, understanding business goals first.",
+      titleKey: "elevator.marketing.title",
+      descriptionKey: "elevator.marketing.description",
       icon: <Paintbrush className="w-6 h-6" />,
-      highlight: "intuitivas",
       size: "small" // Card pequeno (ocupa 2 colunas)
     },
     {
-      title: "AI Integration",
-      description: "Integrating ChatGPT and AI tools into workflows with n8n, creating real business automation.",
+      titleKey: "elevator.ai.title",
+      descriptionKey: "elevator.ai.description",
       icon: <Cpu className="w-6 h-6" />,
-      highlight: "eficiente",
       size: "small" // Card pequeno (ocupa 2 colunas)
     },
     {
-      title: "DevOps Expertise",
-      description: "Deployments with Docker, VPS, and CI/CD pipelines for scalable applications.",
+      titleKey: "elevator.devops.title",
+      descriptionKey: "elevator.devops.description",
       icon: <Rocket className="w-6 h-6" />,
-      highlight: "performance",
       size: "medium" // Card médio (ocupa 4 colunas)
     },
     {
-      title: "Automation Solutions",
-      description: "Built WhatsApp automation connecting CRMs and business systems when no existing solutions were available.",
+      titleKey: "elevator.automation.title",
+      descriptionKey: "elevator.automation.description",
       icon: <Layers className="w-6 h-6" />,
-      highlight: "gerenciamento",
       size: "medium" // Card pequeno (ocupa 2 colunas)
     },
     {
-      title: "Git",
-      description: "All versioning work is done through Git, with good commit practices.",
+      titleKey: "elevator.git.title",
+      descriptionKey: "elevator.git.description",
       icon: <LayoutGrid className="w-6 h-6" />,
-      highlight: "perfeitamente",
       size: "small" // Card pequeno (ocupa 2 colunas)
     },
   ]
@@ -78,10 +74,10 @@ export function ElevatorPitch() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-            Skills that set me apart
+            {t('elevator.title')}
           </h2>
           <p className="max-w-3xl mx-auto text-lg text-gray-300">
-           I offer a premium developer experience with unique, high-quality skills that bridge technical expertise and business understanding.
+           {t('elevator.subtitle')}
           </p>
         </motion.div>
 
@@ -140,19 +136,10 @@ export function ElevatorPitch() {
                       {feature.icon}
                     </div>
                     
-                    <h3 className="text-xl font-bold text-white mb-3 text-center">{feature.title}</h3>
+                    <h3 className="text-xl font-bold text-white mb-3 text-center">{t(feature.titleKey)}</h3>
                     
                     <p className="text-gray-300 text-sm text-center">
-                      {feature.description.split(feature.highlight).map((part, i, arr) => (
-                        i === arr.length - 1 ? (
-                          <span key={i}>{part}</span>
-                        ) : (
-                          <>
-                            <span key={`${i}-part`}>{part}</span>
-                            <span key={`${i}-highlight`} className="text-blue-400 font-medium">{feature.highlight}</span>
-                          </>
-                        )
-                      ))}
+                      {t(feature.descriptionKey)}
                     </p>
                   </div>
                 </MovingBorderCard>

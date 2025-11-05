@@ -3,8 +3,10 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Github, Linkedin } from 'lucide-react'
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export function Footer() {
+  const { t } = useLanguage()
   const footerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h3 className="text-xl font-bold text-white">Gabriel Moraes</h3>
-            <p className="text-gray-300">Desenvolvedor Full Stack</p>
+            <p className="text-gray-300">{t('hero.profile.position')}</p>
           </div>
           <div className="flex space-x-6">
             <a 
@@ -56,7 +58,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} Gabriel Moraes. Todos os direitos reservados.
+          © {new Date().getFullYear()} Gabriel Moraes. {t('footer.rights')}.
         </div>
       </div>
     </footer>

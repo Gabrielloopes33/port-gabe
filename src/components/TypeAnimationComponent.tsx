@@ -1,16 +1,23 @@
 'use client'
 
 import { TypeAnimation } from 'react-type-animation'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export function TypeAnimationComponent() {
+  const { t } = useLanguage()
+
   return (
     <TypeAnimation
       sequence={[
-        'Next.js ',
+        t('typeAnimation.nextjs'),
         1000,
-        'Node.js',
+        t('typeAnimation.nodejs'),
         1000,
-        'TypeScript',
+        t('typeAnimation.typescript'),
+        1000,
+        t('typeAnimation.react'),
+        1000,
+        t('typeAnimation.postgresql'),
         1000,
       ]}
       wrapper="span"
